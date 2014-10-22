@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C934903219F8173B0010531A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C934903119F8173B0010531A /* AppDelegate.swift */; };
+		C934903419F8173B0010531A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C934903319F8173B0010531A /* ViewController.swift */; };
+		C934903719F8173B0010531A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C934903519F8173B0010531A /* Main.storyboard */; };
+		C934903919F8173B0010531A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C934903819F8173B0010531A /* Images.xcassets */; };
+		C934903C19F8173B0010531A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C934903A19F8173B0010531A /* LaunchScreen.xib */; };
+		C934904819F8173B0010531A /* LuaInterpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C934904719F8173B0010531A /* LuaInterpTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C934904219F8173B0010531A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C934902419F8173B0010531A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C934902B19F8173B0010531A;
+			remoteInfo = LuaInterp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C934902C19F8173B0010531A /* LuaInterp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuaInterp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C934903019F8173B0010531A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C934903119F8173B0010531A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C934903319F8173B0010531A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C934903619F8173B0010531A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C934903819F8173B0010531A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C934903B19F8173B0010531A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		C934904119F8173B0010531A /* LuaInterpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuaInterpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C934904619F8173B0010531A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C934904719F8173B0010531A /* LuaInterpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaInterpTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C934902919F8173B0010531A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C934903E19F8173B0010531A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C934902319F8173B0010531A = {
+			isa = PBXGroup;
+			children = (
+				C934902E19F8173B0010531A /* LuaInterp */,
+				C934904419F8173B0010531A /* LuaInterpTests */,
+				C934902D19F8173B0010531A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C934902D19F8173B0010531A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C934902C19F8173B0010531A /* LuaInterp.app */,
+				C934904119F8173B0010531A /* LuaInterpTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C934902E19F8173B0010531A /* LuaInterp */ = {
+			isa = PBXGroup;
+			children = (
+				C934903119F8173B0010531A /* AppDelegate.swift */,
+				C934903319F8173B0010531A /* ViewController.swift */,
+				C934903519F8173B0010531A /* Main.storyboard */,
+				C934903819F8173B0010531A /* Images.xcassets */,
+				C934903A19F8173B0010531A /* LaunchScreen.xib */,
+				C934902F19F8173B0010531A /* Supporting Files */,
+			);
+			path = LuaInterp;
+			sourceTree = "<group>";
+		};
+		C934902F19F8173B0010531A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C934903019F8173B0010531A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C934904419F8173B0010531A /* LuaInterpTests */ = {
+			isa = PBXGroup;
+			children = (
+				C934904719F8173B0010531A /* LuaInterpTests.swift */,
+				C934904519F8173B0010531A /* Supporting Files */,
+			);
+			path = LuaInterpTests;
+			sourceTree = "<group>";
+		};
+		C934904519F8173B0010531A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C934904619F8173B0010531A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C934902B19F8173B0010531A /* LuaInterp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C934904B19F8173B0010531A /* Build configuration list for PBXNativeTarget "LuaInterp" */;
+			buildPhases = (
+				C934902819F8173B0010531A /* Sources */,
+				C934902919F8173B0010531A /* Frameworks */,
+				C934902A19F8173B0010531A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LuaInterp;
+			productName = LuaInterp;
+			productReference = C934902C19F8173B0010531A /* LuaInterp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C934904019F8173B0010531A /* LuaInterpTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C934904E19F8173B0010531A /* Build configuration list for PBXNativeTarget "LuaInterpTests" */;
+			buildPhases = (
+				C934903D19F8173B0010531A /* Sources */,
+				C934903E19F8173B0010531A /* Frameworks */,
+				C934903F19F8173B0010531A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C934904319F8173B0010531A /* PBXTargetDependency */,
+			);
+			name = LuaInterpTests;
+			productName = LuaInterpTests;
+			productReference = C934904119F8173B0010531A /* LuaInterpTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C934902419F8173B0010531A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "BlueDino Software";
+				TargetAttributes = {
+					C934902B19F8173B0010531A = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					C934904019F8173B0010531A = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = C934902B19F8173B0010531A;
+					};
+				};
+			};
+			buildConfigurationList = C934902719F8173B0010531A /* Build configuration list for PBXProject "LuaInterp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C934902319F8173B0010531A;
+			productRefGroup = C934902D19F8173B0010531A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C934902B19F8173B0010531A /* LuaInterp */,
+				C934904019F8173B0010531A /* LuaInterpTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C934902A19F8173B0010531A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C934903719F8173B0010531A /* Main.storyboard in Resources */,
+				C934903C19F8173B0010531A /* LaunchScreen.xib in Resources */,
+				C934903919F8173B0010531A /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C934903F19F8173B0010531A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C934902819F8173B0010531A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C934903419F8173B0010531A /* ViewController.swift in Sources */,
+				C934903219F8173B0010531A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C934903D19F8173B0010531A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C934904819F8173B0010531A /* LuaInterpTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C934904319F8173B0010531A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C934902B19F8173B0010531A /* LuaInterp */;
+			targetProxy = C934904219F8173B0010531A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C934903519F8173B0010531A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C934903619F8173B0010531A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C934903A19F8173B0010531A /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C934903B19F8173B0010531A /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C934904919F8173B0010531A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C934904A19F8173B0010531A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C934904C19F8173B0010531A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LuaInterp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C934904D19F8173B0010531A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LuaInterp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C934904F19F8173B0010531A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LuaInterpTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LuaInterp.app/LuaInterp";
+			};
+			name = Debug;
+		};
+		C934905019F8173B0010531A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LuaInterpTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LuaInterp.app/LuaInterp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C934902719F8173B0010531A /* Build configuration list for PBXProject "LuaInterp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C934904919F8173B0010531A /* Debug */,
+				C934904A19F8173B0010531A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C934904B19F8173B0010531A /* Build configuration list for PBXNativeTarget "LuaInterp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C934904C19F8173B0010531A /* Debug */,
+				C934904D19F8173B0010531A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C934904E19F8173B0010531A /* Build configuration list for PBXNativeTarget "LuaInterpTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C934904F19F8173B0010531A /* Debug */,
+				C934905019F8173B0010531A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C934902419F8173B0010531A /* Project object */;
+}
