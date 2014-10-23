@@ -14,11 +14,11 @@
 		<string>github.com:profburke/ilua.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>LuaInterp/LuaInterp.xcodeproj</string>
+	<string>LuaInterp.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>FC4A9A289955BBD2CD85ECF3A7F3A23FBECDC965</key>
-		<string>../../..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:profburke/ilua.git</string>
