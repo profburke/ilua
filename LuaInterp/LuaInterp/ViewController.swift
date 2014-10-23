@@ -8,18 +8,36 @@
 
 import UIKit
 
-class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+class ViewController: UIViewController, UITextFieldDelegate
+{
+    @IBOutlet weak var input: UITextField!
+    @IBOutlet weak var output: UITextView!
+    
+    let L: LuaState = LuaState()
+    
+
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    
+    
+    func textFieldDidEndEditing(textField: UITextField)
+    {
+        var results = self.L.evaluate(self.input.text)
+        var currentOutput: String = self.output.text
+        var newResults: String = join(" ", results.results)
+        
+        self.output.text = currentOutput + newResults + "\n"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
 }
 
