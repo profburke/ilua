@@ -25,6 +25,12 @@ class LuaState
     }
     
     
+    deinit
+    {
+        lua_close(L)
+    }
+    
+    
     func evaluate(script: String) -> EvalResult
     {
         var results: [String] = []
