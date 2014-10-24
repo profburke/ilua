@@ -9,9 +9,7 @@ Steps taken:
 2. Write a [Bridging Header](https://developer.apple.com/library/ios/documentation/swift/conceptual/buildingcocoaapps/MixandMatch.html)
 3. There is no step 3
 
-Ok, you *can* stop at step 2. You now have the entire Lua API available from Swift[^1]. But for practical purposes, you'll find yourself adding step 3:
-
-[^1]: Make sure to read the discussion on writing a wrapper class to learn about C #define*s* and Swift.
+Ok, you *can* stop at step 2. You now have the entire Lua API available from Swift. But for practical purposes, you'll find yourself adding step 3:
 
 
 3\. write a simple wrapper class
