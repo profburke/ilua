@@ -48,6 +48,7 @@
 		C93490AD19F81CE90010531A /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = C934908B19F81CE90010531A /* lapi.c */; };
 		C93490B919F848F80010531A /* LuaState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93490B819F848F80010531A /* LuaState.swift */; };
 		C93490ED19F94DAA0010531A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C93490EC19F94DAA0010531A /* icon.png */; };
+		C93AB6D219FD8AEC00D4F5EC /* bdlib.c in Sources */ = {isa = PBXBuildFile; fileRef = C93AB6D019FD8AEC00D4F5EC /* bdlib.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,8 @@
 		C93490B719F83FA00010531A /* lua-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lua-Bridging-Header.h"; sourceTree = "<group>"; };
 		C93490B819F848F80010531A /* LuaState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuaState.swift; sourceTree = "<group>"; };
 		C93490EC19F94DAA0010531A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		C93AB6D019FD8AEC00D4F5EC /* bdlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bdlib.c; sourceTree = "<group>"; };
+		C93AB6D119FD8AEC00D4F5EC /* bdlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bdlib.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +175,8 @@
 		C934902E19F8173B0010531A /* LuaInterp */ = {
 			isa = PBXGroup;
 			children = (
+				C93AB6D019FD8AEC00D4F5EC /* bdlib.c */,
+				C93AB6D119FD8AEC00D4F5EC /* bdlib.h */,
 				C934905119F81CD20010531A /* Lua Source */,
 				C934903119F8173B0010531A /* AppDelegate.swift */,
 				C934903319F8173B0010531A /* ViewController.swift */,
@@ -384,6 +389,7 @@
 				C934909319F81CE90010531A /* ltable.c in Sources */,
 				C934909919F81CE90010531A /* lopcodes.c in Sources */,
 				C934909A19F81CE90010531A /* lobject.c in Sources */,
+				C93AB6D219FD8AEC00D4F5EC /* bdlib.c in Sources */,
 				C934909E19F81CE90010531A /* llex.c in Sources */,
 				C934908F19F81CE90010531A /* lundump.c in Sources */,
 				C934909119F81CE90010531A /* ltm.c in Sources */,
