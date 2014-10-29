@@ -8,15 +8,17 @@
 
 import Foundation
 
-// maybe make this an enum with associated data...
+// maybe make this an enum with associated data...or see
+// cocoaphany for possibilities of sleeker error handling
 typealias EvalResult = (code: Int32, results: [String])
 
-
+// TODO: update for Lua 5.3 beta
 
 
 class LuaState
 {
     let L: COpaquePointer
+    
     
     init()
     {
@@ -25,18 +27,29 @@ class LuaState
     }
     
     
+    
+    
     deinit
     {
         lua_close(L)
     }
     
     
+    
+        
     func evaluate(script: String) -> EvalResult
     {
         var results: [String] = []
+        var script = script
         
         lua_settop(L, 0)
         
+        // FIXME: this is a hack
+        if script.hasPrefix("=") {
+            let index = script.rangeOfString("=", options: NSStringCompareOptions.LiteralSearch,
+                range: Range(start: script.startIndex, end: script.endIndex), locale: nil)?.endIndex.successor()
+            script = String("return ") + script.substringFromIndex(index!)
+        }
         
         var err = luaL_loadstring(L, script)
         if err != LUA_OK
