@@ -12,7 +12,7 @@ import Foundation
 // cocoaphany for possibilities of sleeker error handling
 typealias EvalResult = (code: Int32, results: [String])
 
-// TODO: update for Lua 5.3 beta
+
 
 
 class LuaState
