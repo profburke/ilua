@@ -1,5 +1,5 @@
 //
-//  flexiprint.h
+//  bdlib.h
 //  LuaInterp
 //
 //  Created by Matthew Burke on 10/26/14.
@@ -9,13 +9,16 @@
 #ifndef __LuaInterp__flexiprint__
 #define __LuaInterp__flexiprint__
 
+#define LUA_LIB
 
 #include <stdio.h>
 #include "lua.h"
 #include "lauxlib.h"
 #include "luaconf.h"
 
-int open_flexiprint(lua_State *);
+
+
+int open_bdlib(lua_State *);
 
 
 #endif /* defined(__LuaInterp__flexiprint__) */

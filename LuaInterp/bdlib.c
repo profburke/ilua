@@ -1,13 +1,12 @@
 //
-//  flexiprint.c
+//  bdlib.c
 //  LuaInterp
 //
 //  Created by Matthew Burke on 10/26/14.
 //  Copyright (c) 2014 BlueDino Software. All rights reserved.
 //
 
-#include "flexiprint.h"
-#include "luaconf.h"
+#include "bdlib.h"
 
 
 static int flexiprint(lua_State *L)
@@ -30,13 +29,20 @@ static int flexiprint(lua_State *L)
         luai_writestring(s, l);
         lua_pop(L, 1);  /* pop result */
     }
-    luai_writestring();
+    luai_writeline();
     return 0;
 
 }
 
-int open_flexiprint(lua_State *L)
+
+static const luaL_Reg bdlib[] = {
+    {"flexiprint", flexiprint},
+    {NULL, NULL}
+};
+
+
+int open_bdlib(lua_State *L)
 {
-    lua_pushglobaltable(L);
+    luaL_newlib(L, bdlib);
     return 1;
 }

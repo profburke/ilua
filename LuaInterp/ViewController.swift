@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 BlueDino Software. All rights reserved.
 //
 
+
+// Keyboard handling: http://maniacdev.com/2014/10/open-source-ios-library-allowing-you-to-easily-slide-views-automatically-away-from-the-keyboard
+
+
 import UIKit
 
 
@@ -31,7 +35,8 @@ class ViewController: UIViewController, UITextFieldDelegate
     
     func textFieldDidEndEditing(textField: UITextField)
     {
-        var results = self.L.evaluate(self.input.text)
+//        var results = self.L.evaluate(self.input.text)
+        var results = self.L.eval(self.input.text)
         var currentOutput: String = self.output.text
         var newResults: String = join(" ", results.results)
         

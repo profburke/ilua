@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90E3B371A06B6F40027E0CB /* lconvenience.c in Sources */ = {isa = PBXBuildFile; fileRef = C90E3B351A06B6F40027E0CB /* lconvenience.c */; };
 		C934903219F8173B0010531A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C934903119F8173B0010531A /* AppDelegate.swift */; };
 		C934903419F8173B0010531A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C934903319F8173B0010531A /* ViewController.swift */; };
 		C934903719F8173B0010531A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C934903519F8173B0010531A /* Main.storyboard */; };
@@ -62,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C90E3B351A06B6F40027E0CB /* lconvenience.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lconvenience.c; sourceTree = "<group>"; };
+		C90E3B361A06B6F40027E0CB /* lconvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lconvenience.h; sourceTree = "<group>"; };
 		C934902C19F8173B0010531A /* LuaInterp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuaInterp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C934903019F8173B0010531A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C934903119F8173B0010531A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -276,6 +279,8 @@
 				C934908919F81CE90010531A /* lauxlib.c */,
 				C934908A19F81CE90010531A /* lapi.h */,
 				C934908B19F81CE90010531A /* lapi.c */,
+				C90E3B351A06B6F40027E0CB /* lconvenience.c */,
+				C90E3B361A06B6F40027E0CB /* lconvenience.h */,
 			);
 			name = "Lua Source";
 			sourceTree = "<group>";
@@ -403,6 +408,7 @@
 				C934909719F81CE90010531A /* lparser.c in Sources */,
 				C934909B19F81CE90010531A /* loadlib.c in Sources */,
 				C934908D19F81CE90010531A /* lvm.c in Sources */,
+				C90E3B371A06B6F40027E0CB /* lconvenience.c in Sources */,
 				C934903219F8173B0010531A /* AppDelegate.swift in Sources */,
 				C934909D19F81CE90010531A /* lmathlib.c in Sources */,
 				C93490A319F81CE90010531A /* ldump.c in Sources */,
