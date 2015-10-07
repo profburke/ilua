@@ -17,8 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iS1-cw-By9" userLabel="Output">
+                                <rect key="frame" x="16" y="77" width="568" height="498"/>
+                                <color key="backgroundColor" red="0.81169327445652173" green="0.81169327445652173" blue="0.81169327445652173" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter some Lua code and tap return" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VeG-NA-Riw" userLabel="Input">
-                                <rect key="frame" x="16" y="25" width="568" height="30"/>
+                                <rect key="frame" x="46" y="25" width="538" height="30"/>
                                 <color key="backgroundColor" red="0.48439402300702539" green="0.6285051018492771" blue="1" alpha="0.48999999999999999" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -26,27 +32,32 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="wlu-kT-XH3"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iS1-cw-By9" userLabel="Output">
-                                <rect key="frame" x="16" y="77" width="568" height="498"/>
-                                <color key="backgroundColor" red="0.81169327445652173" green="0.81169327445652173" blue="0.81169327445652173" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=">" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="en3-bH-X0t">
+                                <rect key="frame" x="16" y="25" width="15" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="en3-bH-X0t" firstAttribute="top" secondItem="VeG-NA-Riw" secondAttribute="top" id="6qQ-na-mdB"/>
+                            <constraint firstItem="en3-bH-X0t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="FDv-l8-SRx"/>
+                            <constraint firstItem="iS1-cw-By9" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Ozp-Ok-JAu"/>
                             <constraint firstItem="iS1-cw-By9" firstAttribute="top" secondItem="VeG-NA-Riw" secondAttribute="bottom" constant="22" id="bGL-eg-CLF"/>
                             <constraint firstItem="VeG-NA-Riw" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="bed-dW-8p8"/>
+                            <constraint firstItem="en3-bH-X0t" firstAttribute="height" secondItem="VeG-NA-Riw" secondAttribute="height" id="f9g-0k-m2K"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="iS1-cw-By9" secondAttribute="bottom" constant="25" id="gFn-Zg-cyX"/>
+                            <constraint firstItem="iS1-cw-By9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="ja6-wi-7Ru"/>
                             <constraint firstItem="VeG-NA-Riw" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="5" id="nKI-ft-156"/>
-                            <constraint firstItem="iS1-cw-By9" firstAttribute="width" secondItem="VeG-NA-Riw" secondAttribute="width" id="uqq-0r-Rc7"/>
                             <constraint firstItem="iS1-cw-By9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="vMK-41-z2s"/>
-                            <constraint firstItem="VeG-NA-Riw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="y7K-Fu-Hrp"/>
+                            <constraint firstItem="VeG-NA-Riw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="30" id="y7K-Fu-Hrp"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="input" destination="VeG-NA-Riw" id="i9l-q3-KTi"/>
                         <outlet property="output" destination="iS1-cw-By9" id="bSF-a3-MTa"/>
+                        <outlet property="promptLabel" destination="en3-bH-X0t" id="0SK-Hp-ssd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

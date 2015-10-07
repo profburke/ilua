@@ -18,6 +18,10 @@ class ViewController: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var input: UITextField!
     @IBOutlet weak var output: UITextView!
+    @IBOutlet weak var promptLabel: UILabel!
+    let prompt1 = ">"
+    let prompt2 = ">>"
+    
     
     let L: LuaState = LuaState()
     
@@ -35,12 +39,17 @@ class ViewController: UIViewController, UITextFieldDelegate
     
     func textFieldDidEndEditing(textField: UITextField)
     {
-//        var results = self.L.evaluate(self.input.text)
-        var results = self.L.eval(self.input.text)
+        var results = self.L.eval(self.input.text!)
         var currentOutput: String = self.output.text
-        var newResults: String = join(" ", results.results)
+        var newResults: String = (results.results).joinWithSeparator(" ")
         
-        self.output.text = currentOutput + newResults + "\n"
+        self.output.text = newResults + "\n" + currentOutput
+        
+        if results.code == LUA_ERRINCOMPLETE {
+            self.promptLabel.text = self.prompt2
+        } else {
+            self.promptLabel.text = self.prompt1
+        }
     }
 
     

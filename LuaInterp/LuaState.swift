@@ -8,17 +8,19 @@
 
 import Foundation
 
-// maybe make this an enum with associated data...or see
+// TODO: maybe make this an enum with associated data...or see
 // cocoaphany for possibilities of sleeker error handling
 typealias EvalResult = (code: Int32, results: [String])
 
+// TODO: pass in L to all the functions to make them easier to test...
+
+// TODO: TODO: TODO: see AnotherLuaState.swift for some ideas about improvements
 
 
 
 class LuaState
 {
     let L: COpaquePointer
-    let LUA_ERRINCOMPLETE: Int32 = LUA_ERRERR + 1
     let RETURN_CHARSET = NSCharacterSet(charactersInString: "\n")
     let RETURN = "return ".cStringUsingEncoding(NSASCIIStringEncoding)!
     let EOFMARK = "<eof>"
@@ -52,19 +54,23 @@ class LuaState
     
     func l_print(inout results: [String])
     {
-        var n = lua_gettop(self.L)
+        let n = lua_gettop(self.L)
         if n > 0 {
+            lua_getglobal(self.L, "tostring")
             for var i = n; i > 0; i--
             {
+                lua_pushvalue(self.L, -1)
+                lua_pushvalue(self.L, i)
+                lua_callk(self.L, 1, 1, 0, nil)
                 let msg = String(UTF8String: lua_tolstring(L, -1 * i, nil))
                 
                 if let errmsg = msg
                 {
                     results.append(errmsg)
                 }
+                
+                lua_pop(self.L, 1)
             }
-            
-            lua_pop(self.L, n)
         }
     }
     
@@ -73,13 +79,27 @@ class LuaState
     
     func report(status: Int32, inout results: [String])
     {
-        
+        if status != LUA_OK && status != LUA_ERRINCOMPLETE {
+            let msg = String(UTF8String: lua_tolstring(self.L, -1, nil))
+            results.append(msg!)
+            lua_pop(L, 1)  /* remove message */
+            
+        }
     }
     
     
     
     
-    // TODO: pass in L to all the functions to make them easier to test...
+    func removeInput()
+    {
+        let n = lua_gettop(self.L)
+        for var i: Int32 = 1; i < n; i++ {
+            lua_remove(self.L, 1)
+        }
+    }
+    
+    
+    
     
     func incomplete(status: Int32) -> Bool
     {
@@ -190,6 +210,7 @@ class LuaState
         }
 
         if status == LUA_OK {
+            removeInput()
             status = lua_pcallk(self.L, 0, LUA_MULTRET, 0, 0, nil)
         }
         
@@ -206,264 +227,7 @@ class LuaState
         return EvalResult(status, output)
     }
     
+ 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*
-    
-    
-    private func pushline(var script: String)
-    {
-        script = script.stringByTrimmingCharactersInSet(RETURN_CHARSET)
-        if self.firstLine && script.hasPrefix("=") {
-            let afterEqualsIndex = script.startIndex.successor()
-            script = "return " + script.substringFromIndex(afterEqualsIndex)
-        }
-        lua_pushstring(self.L, script.cStringUsingEncoding(NSASCIIStringEncoding)!)
-    }
-    
-    
-    
-    
-    func addreturn() -> Int32
-    {
-        // TODO: check to see if line already begins with return, if so, don't add a second "return"
-        // maybe do the check somewhere else ...
-        lua_pushstring(self.L, RETURN_LITERAL)
-        lua_pushvalue(self.L, -2)
-        lua_concat(self.L, 2)
-        let line = lua_tolstring(self.L, -1, nil)
-        var status = luaL_loadstring(self.L, line)
-        if status == LUA_OK {
-            lua_remove(self.L, -3)
-        } else {
-            lua_pop(self.L, 2)
-        }
-        return status
-    }
-    
-    
-    
-    
-    func incomplete(status: Int32) -> Bool
-    {
-        if status == LUA_ERRSYNTAX {
-            var lmsg: size_t = 0
-            let msg = NSString(CString: lua_tolstring(self.L, -1, &lmsg), encoding: NSASCIIStringEncoding)!
-            if msg.hasSuffix(EOFMARK_LITERAL) {
-                lua_pop(self.L, 1)
-                return true
-            }
-        }
-        return false
-    }
-    
-    
-    
-    
-    // TODO: need to deal w/fact that original was in a loop
-    func multiline() -> Int32
-    {
-        let line = lua_tolstring(self.L, 1, nil)
-        let status = luaL_loadstring(self.L, line)
-        if !incomplete(status) {
-            return status
-        } else {
-            if !self.firstLine {
-                lua_pushstring(self.L, NEWLINE_LITERAL)
-                lua_insert(self.L, -2)
-                lua_concat(self.L, 3)
-            }
-        }
-        return LUA_ERRINCOMPLETE
-    }
-    
-    
-    
-    
-    private func loadline(script: String) -> Int32
-    {
-        if self.firstLine {
-            lua_settop(self.L, 0)
-        }
-        
-        pushline(script)
-        
-        var status: Int32 = LUA_OK
-        if self.firstLine {
-            status = addreturn()
-        }
-        
-        if status != LUA_OK {
-            status = multiline()
-        }
-        
-        lua_remove(self.L, 1) // TODO: this line is not correct
-        self.firstLine = false
-        
-        return status
-    }
-    
-  
-    
-    
-    
-    /*
-     *
-     * If script is a complete, syntactically correct Lua command, execute it and return the output.
-     * If it has syntax errors, return the error messages.
-     * If it is not complete, return a WAITING code.
-     *
-     */
-    func eval2(script: String) -> EvalResult
-    {
-        var output: [String] = []
-        
-        var status = loadline(script)
-
-        if status == LUA_OK {
-            status = lua_pcallk(self.L, 0, LUA_MULTRET, 0, 0, nil)
-        }
-
-        if status == LUA_OK {
-            l_print(&output)
-        } else {
-            report(status)
-        }
-
-        if status != LUA_ERRINCOMPLETE {
-            lua_settop(self.L, 0)
-            self.firstLine = true
-        }
-        
-        return EvalResult(status, output)
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    func evaluate(script: String) -> EvalResult
-    {
-        var results: [String] = []
-        var script = script
-        
-        lua_settop(L, 0)
-        
-        // FIXME: this is a hack
-        if script.hasPrefix("=") {
-            let index = script.rangeOfString("=", options: NSStringCompareOptions.LiteralSearch,
-                range: Range(start: script.startIndex, end: script.endIndex), locale: nil)?.endIndex.successor()
-            script = String("return ") + script.substringFromIndex(index!)
-        }
-        
-        var err = luaL_loadstring(L, script)
-        if err != LUA_OK
-        {
-            let msg = String(UTF8String: lua_tolstring(L, -1, nil))
-            
-            if let errmsg = msg
-            {
-                results.append(errmsg)
-            }
-
-            return (err, results)
-        }
-        
-        
-        err = lua_pcallk(L, 0, LUA_MULTRET, 0, 0, nil)
-        if err != LUA_OK
-        {
-            let msg = String(UTF8String: lua_tolstring(L, -1, nil))
-            
-            if let errmsg = msg
-            {
-                results.append(errmsg)
-            }
-            
-            return (err, results)
-        }
-
-        
-        let nresults = lua_gettop(L)
-        if nresults != 0
-        {
-            for var i = nresults; i > 0; i--
-            {
-                let msg = String(UTF8String: lua_tolstring(L, -1 * i, nil))
-                
-                if let errmsg = msg
-                {
-                    results.append(errmsg)
-                }
-            }
-            
-            lua_settop(L, -(nresults)-1) // can't use lua_pop since it's a #define
-        }
-
-        
-        return (LUA_OK, results)
-    }
-    
-    
-    */
     
 }
