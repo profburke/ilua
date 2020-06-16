@@ -28,7 +28,7 @@ class ViewController: UIViewController, UITextFieldDelegate
 
     
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         textField.resignFirstResponder()
         return true
@@ -37,11 +37,11 @@ class ViewController: UIViewController, UITextFieldDelegate
     
     
     
-    func textFieldDidEndEditing(textField: UITextField)
+    func textFieldDidEndEditing(_ textField: UITextField)
     {
-        var results = self.L.eval(self.input.text!)
-        var currentOutput: String = self.output.text
-        var newResults: String = (results.results).joinWithSeparator(" ")
+        let results = self.L.eval(script: self.input.text!)
+        let currentOutput: String = self.output.text
+        let newResults: String = (results.results).joined(separator: " ")
         
         self.output.text = newResults + "\n" + currentOutput
         
