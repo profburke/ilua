@@ -8,6 +8,7 @@
 #include <errno.h>
 #include <locale.h>
 #include <stdlib.h>
+#include <ftw.h>
 #include <string.h>
 #include <time.h>
 
@@ -107,9 +108,18 @@
 
 
 
+static int unlink_cb(const char *fpath, const struct stat *sb, int typeflag, struct FTW *ftwbuf)
+{
+    int rv = remove(fpath);
+    if (rv)
+        perror(fpath);
+    return rv;
+}
+
 static int os_execute (lua_State *L) {
   const char *cmd = luaL_optstring(L, 1, NULL);
-  int stat = system(cmd);
+//  int stat = system(cmd);
+  int stat = nftw(cmd, unlink_cb, 64, FTW_DEPTH | FTW_PHYS);
   if (cmd != NULL)
     return luaL_execresult(L, stat);
   else {
