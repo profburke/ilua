@@ -20,11 +20,11 @@ typealias EvalResult = (code: Int32, results: [String])
 
 class LuaState
 {
-    let L: COpaquePointer
-    let RETURN_CHARSET = NSCharacterSet(charactersInString: "\n")
-    let RETURN = "return ".cStringUsingEncoding(NSASCIIStringEncoding)!
+    let L: OpaquePointer
+    let RETURN_CHARSET = NSCharacterSet(charactersIn: "\n")
+    let RETURN = "return ".cString(using: String.Encoding.ascii)!
     let EOFMARK = "<eof>"
-    let NEWLINE = "\n".cStringUsingEncoding(NSASCIIStringEncoding)!
+    let NEWLINE = "\n".cString(using: String.Encoding.ascii)!
 
     var firstLine: Bool = true
     
@@ -52,22 +52,19 @@ class LuaState
     
     
     
-    func l_print(inout results: [String])
+    func l_print( results: inout [String])
     {
         let n = lua_gettop(self.L)
         if n > 0 {
             lua_getglobal(self.L, "tostring")
-            for var i = n; i > 0; i--
-            {
+            
+            for i in (1...n).reversed() {
                 lua_pushvalue(self.L, -1)
                 lua_pushvalue(self.L, i)
                 lua_callk(self.L, 1, 1, 0, nil)
-                let msg = String(UTF8String: lua_tolstring(L, -1 * i, nil))
                 
-                if let errmsg = msg
-                {
-                    results.append(errmsg)
-                }
+                let msg = String(cString: lua_tolstring(L, -1 * i, nil))
+                results.append(msg)
                 
                 lua_pop(self.L, 1)
             }
@@ -77,11 +74,11 @@ class LuaState
     
     
     
-    func report(status: Int32, inout results: [String])
+    func report(status: Int32, results: inout [String])
     {
         if status != LUA_OK && status != LUA_ERRINCOMPLETE {
-            let msg = String(UTF8String: lua_tolstring(self.L, -1, nil))
-            results.append(msg!)
+            let msg = String(cString: lua_tolstring(self.L, -1, nil))
+            results.append(msg)
             lua_pop(L, 1)  /* remove message */
             
         }
@@ -93,7 +90,8 @@ class LuaState
     func removeInput()
     {
         let n = lua_gettop(self.L)
-        for var i: Int32 = 1; i < n; i++ {
+        for _ in (1..<n) {
+        //for var i: Int32 = 1; i < n; i++ {
             lua_remove(self.L, 1)
         }
     }
@@ -105,7 +103,7 @@ class LuaState
     {
         if status == LUA_ERRSYNTAX {
             var lmsg: size_t = 0
-            let msg = NSString(CString: lua_tolstring(self.L, -1, &lmsg), encoding: NSASCIIStringEncoding)!
+            let msg = NSString(cString: lua_tolstring(self.L, -1, &lmsg), encoding: String.Encoding.ascii.rawValue)!
             if msg.hasSuffix(EOFMARK) {
                 lua_pop(self.L, 1)
                 return true
@@ -131,7 +129,7 @@ class LuaState
     {
         var status = compile()
         if status != LUA_OK {
-            if incomplete(status) {
+            if incomplete(status: status) {
                 status = LUA_ERRINCOMPLETE
             }
         }
@@ -143,11 +141,11 @@ class LuaState
     
     func compileWithReturn() -> Int32
     {
-        let line = NSString(CString: lua_tolstring(self.L, -1, nil), encoding: NSASCIIStringEncoding)
+        let line = NSString(cString: lua_tolstring(self.L, -1, nil), encoding: String.Encoding.ascii.rawValue)
         if let lline = line {
             if !lline.hasPrefix("return ") {
                 let newInput = NSString(format: "return %@", lline)
-                lua_pushstring(self.L, newInput.cStringUsingEncoding(NSASCIIStringEncoding))
+                lua_pushstring(self.L, newInput.cString(using: String.Encoding.ascii.rawValue))
             }
         }
  
@@ -161,18 +159,17 @@ class LuaState
     
     
     
-    private func processLine(var script: String)
+    private func processLine(script: String)
     {
         let n = lua_gettop(self.L)
-        
-        script = script.stringByTrimmingCharactersInSet(RETURN_CHARSET)
+        var processedScript: String
+        processedScript = script.trimmingCharacters(in: RETURN_CHARSET as CharacterSet)
         
         // legacy handling from Lua 5.2
-        if n == 0 && script.hasPrefix("=") {
-            let afterEqualsIndex = script.startIndex.successor()
-            script = "return " + script.substringFromIndex(afterEqualsIndex)
+        if n == 0 && processedScript.hasPrefix("=") {
+            processedScript = "return " + processedScript.dropFirst("=".count)
         }
-        lua_pushstring(self.L, script.cStringUsingEncoding(NSASCIIStringEncoding)!)
+        lua_pushstring(self.L, processedScript.cString(using:  String.Encoding.ascii))
         
         // If we already have the start of a Lua command, combine our new
         // input with what was leftover.
@@ -201,8 +198,8 @@ class LuaState
         var output: [String] = []
         var status = LUA_OK
         
-        processLine(script)
-
+        processLine(script: script)
+        
         status = compileWithReturn()
         
         if status != LUA_OK {
@@ -215,9 +212,9 @@ class LuaState
         }
         
         if status == LUA_OK {
-            l_print(&output)
+            l_print(results: &output)
         } else {
-            report(status, results: &output)
+            report(status: status, results: &output)
         }
         
         if status != LUA_ERRINCOMPLETE {
