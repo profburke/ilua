@@ -1,6 +1,15 @@
 
 ## README
 
+**Update: 2020-06-21**: *First, thanks to @andy380743909 for updating this project to Swift 5. I wound up adding a couple more commits to his PR and due to my fumbling grasp of git, I've managed to make it look like it's my own PR--sorry.*
+
+*Although it now compiles and runs in modern Swift, the length of time this project has gone without updates has caused some UI issues to appear--the most pressing was that I had to disable smart quotes, etc for the input field. Over the next week or so, I plan to push up some more UI improvements.*
+
+*Two more important changes that will appear shortyly include: 1) I discovered that when Lua API functions return nil, it crashes the app, and 2) I want to pull the Lua code and LuaState class into a separate Swift package.*
+
+
+
+
 This project is an example of integrating Lua with an iOS program. It's not meant to be an example of best practice; merely as an example of how easy it is to include Lua in your Swift project.
 
 Steps taken:
@@ -15,7 +24,7 @@ Ok, you *can* stop at step 2. You now have the entire Lua API available from Swi
 3\. write a simple wrapper class
 
 
-In most cases, you want to treat the Lua interpreter as a black box: your Swift code sends a script and/or data to Lua, processing occurs, and you receive data back. You don't want to worry about the details of managing Lua state(s) and manipulating the Lua stack.
+In most cases, you want to treat the Lua interpreter as a sealed box: your Swift code sends a script and/or data to Lua, processing occurs, and you receive data back. You don't want to worry about the details of managing Lua state(s) and manipulating the Lua stack.
 
 So it pays to have a Swift class to wrap the details of dealing with Lua. You class can provide a simple API and Lua state initialization is automatically handled by the class's `init` method. To begin with your Swift class can provide a trivial API consisting of an `eval` method that allows you to hand off a script and get data back. As you work with Lua more and your needs change, you can extend your wrapper class's API.
 
@@ -52,7 +61,7 @@ For example, you cannot use `lua_pop(L, n)` since it's a macro and have to resor
 
 ##### Project History and Alternatives
 
-The original version of this project (circa 2010) used Objective C. As of October 2014, it has been rewritten in Swift and requires Xcode 6.1. The target OS is iOS 8.1.
+The original version of this project (circa 2010) used Objective C. As of October 2014, it has been rewritten in Swift. ~~and requires Xcode 6.1. The target OS is iOS 8.1.~~ Currently (*2020-06-21*) it is written in Swift 5 and requires the appropriate versions of Xcode and iOS.
 
 I have a few improvements in mind, although it's not likely I'll get to them in a timely manner. 
 
@@ -63,6 +72,10 @@ If you want to integrate Lua with your iOS project, there are a number of availa
 * a quick search on [Github](github.com) or [Google](google.com) will turn up a score of others
 
 
+## Acknowledgements
+
+Thanks to @andy380743909 for updating this project from ancient Swift to Swift 5!
+
 ---
 ---
 
@@ -71,7 +84,7 @@ If you want to integrate Lua with your iOS project, there are a number of availa
 
 ## This project
 
-Copyright &copy; 2010-2014 Matthew M. Burke
+Copyright &copy; 2010-2020 Matthew M. Burke
  
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -96,7 +109,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Lua is used under the following terms:
 
-Copyright © 1994–2014 Lua.org, PUC-Rio.
+Copyright © 1994–2020 Lua.org, PUC-Rio.
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
